@@ -1,0 +1,91 @@
+lease-frontend:
+  image: daocloud.io/gizwits2015/lease-frontend:latest
+  links:
+    - lease-backend:backend
+    - lease-app:app
+    - lease-job:job
+    - lease-netty:netty
+  environment:
+    - TZ=Asia/Shanghai
+  command:
+    - nginx
+    - -g
+    - daemon off;
+  restart: always
+  ports:
+    - 8000:80
+  volumes:
+    - /data/lease/logs-qa1/nginx:/data/lease/logs
+lease-backend:
+  image: daocloud.io/gizwits2015/lease-backend:latest
+  links:
+    - lease-mysql:mysql
+    - lease-redis:redis
+  ports:
+    - 8080:8080
+  environment:
+    - TZ=Asia/Shanghai
+    - MYSQL_USERNAME=xxx
+    - MYSQL_PASSWORD=yyy
+  volumes:
+    - /data/lease/logs-qa1:/data/lease/logs
+  restart: always
+lease-app:
+  image: daocloud.io/gizwits2015/lease-app:latest
+  links:
+    - lease-mysql:mysql
+    - lease-redis:redis
+  ports:
+    - 8081:8080
+  environment:
+    - TZ=Asia/Shanghai
+    - MYSQL_USERNAME=xxx
+    - MYSQL_PASSWORD=yyy
+  volumes:
+    - /data/lease/logs-qa1:/data/lease/logs
+  restart: always
+lease-job:
+  image: daocloud.io/gizwits2015/lease-job:latest
+  links:
+    - lease-mysql:mysql
+    - lease-redis:redis
+  ports:
+    - 8082:8080
+  environment:
+    - TZ=Asia/Shanghai
+    - MYSQL_USERNAME=xxx
+    - MYSQL_PASSWORD=yyy
+  volumes:
+    - /data/lease/logs-qa1:/data/lease/logs
+  restart: always
+lease-netty:
+  image: daocloud.io/gizwits2015/lease-netty:latest
+  links:
+    - lease-mysql:mysql
+    - lease-redis:redis
+  ports:
+    - 8083:8080
+  environment:
+    - TZ=Asia/Shanghai
+    - MYSQL_USERNAME=xxx
+    - MYSQL_PASSWORD=yyy
+  volumes:
+    - /data/lease/logs-qa1:/data/lease/logs
+  restart: always
+lease-mysql:
+  image: index.docker.io/library/mysql:5.7
+  volumes:
+    - /data/lease/mysql-conf-qa1:/etc/mysql
+    - /data/lease/mysql-data-qa1:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=ROOT_PASS
+    - MYSQL_DATABASE=gizwits_lease
+    - MYSQL_USER=xxx
+    - MYSQL_PASSWORD=yyy
+    - TZ=Asia/Shanghai
+lease-redis:
+  image: index.docker.io/library/redis:3.2.10
+  volumes:
+    - /data/lease/redis-qa1:/data
+  environment:
+    - TZ=Asia/Shanghai
