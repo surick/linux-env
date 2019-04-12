@@ -1,14 +1,16 @@
 ## linux-env
-> Let developers build linux env **FAST**.
+> Help developers to build linux env **FAST**.
 
 ### Description
-- Some useful shell to make developers build their linux env fast.
-- Now it works fine for me in `Centos7` but it also try to support other linux os.
+- Many useful shells and configs to help developers to build their linux env fast.
+- Now it works fine in `Centos7` and will to support other linux os in the future.
 
 ### How to use
-- Upload corresponding packages then exec shell.
-- U can also use some commands like `wget` to download the packages from remote then exec shell.
+- Firstly, you should upload corresponding packages to your server by tools.
+- Secondly, enter into the directory and `tar -zxvf` the packages.
+- Finally, you have to execute this shell.
+- Of course, you can use some commands like `wget` to download packages from the Internet.
 
 ### Contributing
-- Waiting for your helpful contributions.
-- Everyone can create a `PR` to make it better.
+- When you find mistakes or any places that can be improved, please create a `PR` to make it better.
+- I am waiting for your valuable issues and suggestions with a grateful heart.
