@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  phnix-server:
+    image: daocloud.io/gizwits2015/lease-backend:latest
+    ports:
+      - 8080:8080
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  phnix-app:
+    image: daocloud.io/gizwits2015/lease-app:latest
+    ports:
+      - 54088:8080
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  phnix-netty:
+    image: daocloud.io/gizwits2015/lease-netty:latest
+    ports:
+      - 8082:8080
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  phnix-job:
+    image: daocloud.io/gizwits2015/lease-job:latest
+    ports:
+      - 8083:8080
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always

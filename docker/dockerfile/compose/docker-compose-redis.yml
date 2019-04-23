@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  phnix-redis:
+    image: redis
+    volumes:
+      - /data/phnix/redis-dev:/data
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 6379:6379
+    restart: always

@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  phnix-web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: phnix_phnix-nginx
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: /docker/nginx/www
+        target: /usr/share/nginx/html
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
