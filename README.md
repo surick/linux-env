@@ -6,10 +6,9 @@
 - Now it works fine in `Centos7` and will to support other linux os in the future.
 
 ### How to use
-- Firstly, you should upload corresponding packages to your server by tools.
+- Firstly, you should upload corresponding packages to your server by tools or use some commands like `wget` to download packages from the Internet.
 - Secondly, enter into the directory and `tar -zxvf` the packages.
 - Finally, you have to execute this shell.
-- Of course, you can use some commands like `wget` to download packages from the Internet.
 
 ### Contributing
 - When you find mistakes or any places that can be improved, please create a `PR` to make it better.
