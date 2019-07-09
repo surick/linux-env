@@ -19,7 +19,7 @@ temp_password=$(grep password /var/log/mysqld.log | awk '{print $NF}')
 new_password=surick-abc123@
 
 # Set up a batch file with the SQL commands
-echo "SET GLOBAL validate_password_length = 6;SET GLOBAL validate_password_number_count = 0;ALTER USER 'root'@'localhost' IDENTIFIED BY '$new_password'; flush privileges;" > reset_pass.sql
+echo "SET GLOBAL validate_password_policy = 0;SET GLOBAL validate_password_length = 6;SET GLOBAL validate_password_number_count = 0;ALTER USER 'root'@'localhost' IDENTIFIED BY '$new_password'; flush privileges;" > reset_pass.sql
 
 # Set root can be accessed remotely
 echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$new_password' WITH GRANT OPTION; flush privileges;" >> reset_pass.sql
